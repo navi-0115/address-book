@@ -3,10 +3,10 @@
 ## Features
 
 <ul>
-    <li>**Contact List**: dwdw</li>
-    <li>**Add Contact**: dwdw</li>
-    <li>**Delete Contact**: dwdw</li>
-    <li>**Edit Contact**: dwdw</li>
+    <li>**Contact List** : dwdw</li>
+    <li>**Add Contact** : dwdw</li>
+    <li>**Delete Contact** : dwdw</li>
+    <li>**Edit Contact** : dwdw</li>
 
 </ul>
 
