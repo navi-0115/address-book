@@ -33,6 +33,7 @@ const contacts = [
   },
 ];
 
+// RENDER CONTACT
 function renderContacts(contacts) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
@@ -68,7 +69,7 @@ let newContact = {
 
 addContact(contacts, newContact);
 
-// searching contacts
+// SEARCHING CONTACTS
 function searchContact(contacts, keyword) {
   let lowerKeywords = keyword.toLowerCase();
   let results = contacts.filter(
