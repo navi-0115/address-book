@@ -32,3 +32,20 @@ const contacts = [
     labels: ["Others"],
   },
 ];
+
+function renderContacts(contacts) {
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    const labelOutput = contact.labels.join("");
+
+    console.log(`
+       Fullname   :  ${contact.fullName}
+       Email      :  ${contact.email}
+       Phone      :  ${contact.phoneNumber}
+       Address    :  ${contact.address}
+       Job Title  :  ${contact.jobTitle}
+       Label      :  ${contact.labels}`);
+  }
+}
+
+renderContacts(contacts);
