@@ -67,3 +67,19 @@ let newContact = {
 };
 
 addContact(contacts, newContact);
+
+// searching contacts
+function searchContact(contacts, keyword) {
+  let lowerKeywords = keyword.toLowerCase();
+  let results = contacts.filter(
+    (contact) =>
+      contact.fullName.toLowerCase().includes(lowerKeywords) ||
+      contact.email.toLowerCase().includes(lowerKeywords) ||
+      contact.phoneNumber.toLowerCase().includes(lowerKeywords) ||
+      contact.address.toLowerCase().includes(lowerKeywords)
+  );
+  console.log("Filtered Contacts:\n");
+  renderContacts(results);
+}
+
+searchContact(contacts, "SLEMAN");
