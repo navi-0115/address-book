@@ -49,3 +49,21 @@ function renderContacts(contacts) {
 }
 
 renderContacts(contacts);
+
+// ADD CONTACT
+function addContact(contacts, newContact) {
+  contacts.push(newContact);
+  renderContacts(contacts);
+}
+
+let newContact = {
+  id: 4,
+  fullName: "Ahmad Cahyadi",
+  email: "ahmadc@mail.com",
+  phoneNumber: "62888092131232",
+  address: "Bantul, DIY",
+  jobTitle: "Junior DevOps",
+  labels: ["Colleague"],
+};
+
+addContact(contacts, newContact);
