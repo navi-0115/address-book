@@ -9,7 +9,6 @@ This is an address book website designed for contact management, allowing users 
 - **Delete Contact**: Users can remove contacts that are no longer relevant.
 - **Edit Contact**: Users can modify the details of existing contacts.
 - **Search Contacts**: Users can search for specific contacts using a search bar.
-- **Categorize Contacts**: Users can label contacts as Family, Friend, Colleague, or Other and filter the contact list based on these categories.
 
 ## Tech Stack
 
