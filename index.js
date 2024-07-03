@@ -52,7 +52,7 @@ function renderContacts(contacts) {
 renderContacts(contacts);
 
 // ADD CONTACT
-function addContact(contacts, newContact) {
+function addContacts(contacts, newContact) {
   contacts.push(newContact);
   renderContacts(contacts);
 }
@@ -67,10 +67,10 @@ let newContact = {
   labels: ["Colleague"],
 };
 console.log("Updated Contacts:\n");
-addContact(contacts, newContact);
+addContacts(contacts, newContact);
 
 // SEARCHING CONTACTS
-function searchContact(contacts, keyword) {
+function searchContacts(contacts, keyword) {
   let lowerKeywords = keyword.toLowerCase();
   let results = contacts.filter(
     (contact) =>
@@ -83,4 +83,4 @@ function searchContact(contacts, keyword) {
   renderContacts(results);
 }
 
-searchContact(contacts, "SLEMAN");
+searchContacts(contacts, "SLEMAN");
