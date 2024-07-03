@@ -12,9 +12,10 @@ This is an address book website designed for contact management, allowing users 
 
 ## Tech Stack
 
-- **HTML**: Markup language used for structuring the web pages.
+- **HTML**: Used for structuring the web pages.
 - **Tailwind CSS**: Utility-first CSS framework for styling the application.
-- **JavaScript**: Programming language used for adding interactivity and managing contact data.
+- **JavaScript**: Used for adding interactivity and managing contact data.
+- **Local Storage**: The data of this website is stored on the browsers local storage.
 
 ## License
 
