@@ -66,7 +66,7 @@ let newContact = {
   jobTitle: "Junior DevOps",
   labels: ["Colleague"],
 };
-
+console.log("Updated Contacts:\n");
 addContact(contacts, newContact);
 
 // SEARCHING CONTACTS
