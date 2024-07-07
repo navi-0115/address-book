@@ -41,7 +41,7 @@ function addContacts(contact) {
   const contacts = getContacts();
   contacts.push(contact);
   saveContacts(contacts);
-  renderContacts(contact);
+  renderContacts();
   console.log("Contacts added:", contact);
 }
 
@@ -58,24 +58,21 @@ function searchContacts(contact, keyword) {
 // Event Listener for Add Contact Form
 contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  contactForm.reset();
-  contactModal.classList.remove("hidden");
 
-  saveContactButton.submit = function () {
-    const newContact = {
-      name: contactForm.elements["name"].value,
-      email: contactForm.elements["email"].value,
-      phone: contactForm.elements["phone-number"].value,
-      jobTitle: contactForm.elements["job"].value,
-      address: contactForm.elements["address"].value,
-    };
+  const newContact = {
+    name: contactForm.elements["name"].value,
+    email: contactForm.elements["email"].value,
+    phone: contactForm.elements["phone-number"].value,
+    jobTitle: contactForm.elements["job"].value,
+    address: contactForm.elements["address"].value,
   };
 
   addContacts(newContact);
+  contactForm.reset();
   contactModal.classList.add("hidden");
 });
 
 // initialize to display existing data
 document.addEventListener("DOMContentLoaded", () => {
-  renderContacts(getContacts());
+  renderContacts();
 });
