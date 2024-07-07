@@ -43,12 +43,12 @@ function addContacts(contact) {
 }
 
 // Search Contacts
-function searchContacts(contacts, keyword) {
+function searchContacts(contact, keyword) {
   const contacts = getContacts();
   const filtered = contacts.filter((contact) =>
     contact.toLowerCase().includes(keyword.toLowerCase())
   );
-  console.log("Filtered Contacts:\n");
+  console.log("Filtered Contacts:\n", contact);
   renderContacts(filtered);
 }
 
