@@ -52,23 +52,4 @@ function searchContacts(contact, keyword) {
   renderContacts(filtered);
 }
 
-// Main Execution
-renderContacts(contacts);
-
-const newContact = {
-  id: 4,
-  fullName: "Ahmad Cahyadi",
-  email: "ahmadc@mail.com",
-  phoneNumber: "62888092131232",
-  address: "Bantul, DIY",
-  jobTitle: "Junior DevOps",
-  labels: ["Colleague"],
-};
-console.log("Updated Contacts:\n");
-addContacts(contacts, newContact);
-
-searchContacts(contacts, "SLEMAN");
-
-storeContacts(contacts);
-let storedContacts = getContacts();
-console.log("Data Contacts:", storedContacts);
+// Event Listener for Add Contact Form
