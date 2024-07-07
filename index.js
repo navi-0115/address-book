@@ -1,8 +1,3 @@
-const labels = [
-  { id: 1, name: "Friend" },
-  { id: 2, name: "Family" },
-];
-
 const contacts = [];
 
 // Render Contact
