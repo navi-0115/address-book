@@ -14,25 +14,27 @@
     <link rel="icon" href="" />
   </head>
   <body>
-    <main class="bg-main container mx-auto px-20 py-12 max-w-screen-xl px-4 lg:px-12">
+    <main class="bg-main container mx-auto py-12 max-w-screen-xl px-4 lg:px-12">
       <!-- Hero Section -->
       <section id="hero-section" class="text-left">
-          <div class="content-center">
-            <h1 class="text-6xl text-center font-bold">
-              Address Book
-            </h1>
+        <div class="max-w-s mx-auto px-4 py-8">
+            <div class="content-center">
+              <h1 class="text-6xl text-center font-bold">
+                Address Book
+              </h1>
+            </div>
           </div>
-        </div>
-        <div class="mt-8">
-          <!-- Website Description -->
-          <h3 class="mt-4 text-center text-gray-800 font-bold">
-              Welcome to our Address Book website, your ultimate solution for seamless contact management. 
-          </h3>
-          <p class="mt-4 text-center text-gray-600">
-            Our user-friendly platform empowers you to effortlessly store, edit, delete, and list your contacts, all in one convenient location.
-            Whether you're managing personal connections or professional relationships, our website is designed to make your life easier.
-            Try our Address Book website today and experience the simplicity of managing your contacts like never before!
-          </p>
+          <div class="mt-8 max-w-s mx-auto">
+            <!-- Website Description -->
+            <h3 class="mt-4 text-center text-gray-800 font-bold">
+                Welcome to our Address Book website, your ultimate solution for seamless contact management. 
+            </h3>
+            <p class="mt-4 text-center text-gray-600">
+              Our user-friendly platform empowers you to effortlessly store, edit, delete, and list your contacts, all in one convenient location.
+              Whether you're managing personal connections or professional relationships, our website is designed to make your life easier.
+              Try our Address Book website today and experience the simplicity of managing your contacts like never before!
+            </p>
+          </div>
         </div>
       </section>
       
@@ -86,7 +88,7 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- Create modal -->
+                <!-- Modal add contact -->
                 <div
                 id="contact-modal"
                 tabindex="-1"
@@ -207,6 +209,7 @@
                             ></textarea>
                         </div>
                         </div>
+                        <!-- Save button -->
                         <button
                         id="save-contact-button"
                         type="submit"
@@ -236,7 +239,12 @@
     </main>
 
     <!-- footer -->
-    <footer></footer>
+    <footer class="m-4">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://github.com/navi-0115/address-book" class="hover:underline">Navi</a>. All Rights Reserved.</span>
+        </div>
+    </footer>
     <script src="/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
   </body>
