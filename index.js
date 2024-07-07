@@ -33,7 +33,7 @@ const contacts = [
   },
 ];
 
-// RENDER CONTACT
+// Render Contact
 function renderContacts(contacts) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
@@ -49,15 +49,30 @@ function renderContacts(contacts) {
   }
 }
 
-renderContacts(contacts);
-
-// ADD CONTACT
+// Add Contacts
 function addContacts(contacts, newContact) {
   contacts.push(newContact);
   renderContacts(contacts);
 }
 
-let newContact = {
+// Search Contacts
+function searchContacts(contacts, keyword) {
+  lowerKeywords = keyword.toLowerCase();
+  const results = contacts.filter(
+    (contact) =>
+      contact.fullName.toLowerCase().includes(lowerKeywords) ||
+      contact.email.toLowerCase().includes(lowerKeywords) ||
+      contact.phoneNumber.toLowerCase().includes(lowerKeywords) ||
+      contact.address.toLowerCase().includes(lowerKeywords)
+  );
+  console.log("Filtered Contacts:\n");
+  renderContacts(results);
+}
+
+// Main Execution
+renderContacts(contacts);
+
+const newContact = {
   id: 4,
   fullName: "Ahmad Cahyadi",
   email: "ahmadc@mail.com",
@@ -68,19 +83,5 @@ let newContact = {
 };
 console.log("Updated Contacts:\n");
 addContacts(contacts, newContact);
-
-// SEARCHING CONTACTS
-function searchContacts(contacts, keyword) {
-  let lowerKeywords = keyword.toLowerCase();
-  let results = contacts.filter(
-    (contact) =>
-      contact.fullName.toLowerCase().includes(lowerKeywords) ||
-      contact.email.toLowerCase().includes(lowerKeywords) ||
-      contact.phoneNumber.toLowerCase().includes(lowerKeywords) ||
-      contact.address.toLowerCase().includes(lowerKeywords)
-  );
-  console.log("Filtered Contacts:\n");
-  renderContacts(results);
-}
 
 searchContacts(contacts, "SLEMAN");
