@@ -54,7 +54,7 @@
                     </div>
                     <!-- Add Contact Button -->
                     <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        <button type="button" id="contactModalButton" data-modal-target="contactModal" data-modal-toggle="contactModal" class="flex items-center justify-center text-black bg-primary-900 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                        <button type="button" id="contact-modal-button" data-modal-target="contact-modal" data-modal-toggle="contact-modal" class="flex items-center justify-center text-black bg-primary-900 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                             <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                             </svg>
@@ -84,7 +84,7 @@
                 </div>
                 <!-- Create modal -->
                 <div
-                id="contactModal"
+                id="contact-modal"
                 tabindex="-1"
                 aria-hidden="true"
                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -104,8 +104,8 @@
                         <button
                         type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-target="contactModal"
-                        data-modal-toggle="contactModal"
+                        data-modal-target="contact-modal"
+                        data-modal-toggle="contact-modal"
                         >
                         <svg
                             aria-hidden="true"
@@ -124,7 +124,7 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <form id="contactForm" action="#" method="POST">
+                    <form id="contact-form" action="#" method="POST">
                         <div class="grid gap-4 mb-4 sm:grid-cols-2">
                         <!-- Full name -->
                         <div>
@@ -204,7 +204,7 @@
                         </div>
                         </div>
                         <button
-                        id="saveContactButton"
+                        id="save-contact-button"
                         type="submit"
                         class="text-black inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                         >

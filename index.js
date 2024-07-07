@@ -1,14 +1,17 @@
 // DOM Elements
 const contactList = document.getElementById("contact-list");
+const contactForm = document.getElementById("contact-form");
+const saveContactButton = document.getElementById("save-contact-button");
+const contactModal = document.getElementById("contact-modal");
 
 // Save contacts to local storage
 function saveContacts(contacts) {
-  localStorage.setItem("Contacts", JSON.stringify(contacts));
+  localStorage.setItem("contacts", JSON.stringify(contacts));
 }
 // get contacts from local storage
 function getContacts() {
-  const data = localStorage.getItem("contacts");
-  return data ? JSON.parse(data) : [];
+  const contacts = localStorage.getItem("contacts");
+  return contacts ? JSON.parse(contacts) : [];
 }
 
 // Render Contact
@@ -53,3 +56,26 @@ function searchContacts(contact, keyword) {
 }
 
 // Event Listener for Add Contact Form
+contactForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  contactForm.reset();
+  contactModal.classList.remove("hidden");
+
+  saveContactButton.submit = function () {
+    const newContact = {
+      name: contactForm.elements["name"].value,
+      email: contactForm.elements["email"].value,
+      phone: contactForm.elements["phone-number"].value,
+      jobTitle: contactForm.elements["job"].value,
+      address: contactForm.elements["address"].value,
+    };
+  };
+
+  addContacts(newContact);
+  contactModal.classList.add("hidden");
+});
+
+// initialize to display existing data
+document.addEventListener("DOMContentLoaded", () => {
+  renderContacts(getContacts());
+});
