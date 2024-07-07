@@ -1,7 +1,6 @@
 // DOM Elements
 const contactList = document.getElementById("contact-list");
 const contactForm = document.getElementById("contact-form");
-const saveContactButton = document.getElementById("save-contact-button");
 const contactModal = document.getElementById("contact-modal");
 
 // Save contacts to local storage
