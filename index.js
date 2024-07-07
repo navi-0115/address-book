@@ -1,3 +1,5 @@
+const contactList = document.getElementById("contact-list");
+
 const contacts = [];
 
 // Render Contact
