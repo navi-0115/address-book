@@ -61,6 +61,13 @@ const searchContacts = (contact, keyword) => {
   renderContacts(filtered);
 };
 
+// function to hide contact modal
+const hideContactModal = () => {
+  contactForm.reset();
+  contactModal.classList.remove("block");
+  contactModal.classList.add("hidden");
+};
+
 // Event Listener for Add Contact Form
 contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -75,8 +82,7 @@ contactForm.addEventListener("submit", (event) => {
 
   addContact(newContact);
   renderContacts();
-  contactForm.reset();
-  contactModal.classList.add("hidden");
+  hideContactModal();
 });
 
 // initialize to display existing data
