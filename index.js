@@ -2,6 +2,7 @@
 const contactList = document.getElementById("contact-list");
 const contactForm = document.getElementById("contact-form");
 const contactModal = document.getElementById("contact-modal");
+const searchInput = document.getElementById("search-input");
 
 // Save contacts to local storage
 const saveContacts = (contacts) => {
@@ -17,15 +18,16 @@ const getContacts = () => {
     const contacts = localStorage.getItem("contacts");
     return contacts ? JSON.parse(contacts) : [];
   } catch (error) {
-    console.log("Could not get contacts from local storage");
+    console.log("Could not get contacts from local storage", error);
+    return [];
   }
 };
 
 // Render Contact
-const renderContacts = () => {
-  const contacts = getContacts();
+const renderContacts = (contacts = getContacts()) => {
+  // const contacts = getContacts();
   contactList.innerHTML = "";
-  contacts.forEach((contact, index) => {
+  contacts.forEach((contact) => {
     const contactItem = document.createElement("tr");
 
     contactItem.innerHTML = `
@@ -52,14 +54,13 @@ const addContact = (contact) => {
 };
 
 // Search Contacts
-const searchContacts = (contact, keyword) => {
+function searchContacts(query) {
   const contacts = getContacts();
   const filtered = contacts.filter((contact) =>
-    contact.toLowerCase().includes(keyword.toLowerCase())
+    contact.name.toLowerCase().includes(query.toLowerCase())
   );
-  console.log("Filtered Contacts:\n", contact);
-  renderContacts(filtered);
-};
+  return filtered;
+}
 
 // function to hide contact modal
 const hideContactModal = () => {
@@ -83,6 +84,13 @@ contactForm.addEventListener("submit", (event) => {
   addContact(newContact);
   renderContacts();
   hideContactModal();
+});
+
+// Event listener for searching contacts
+searchInput.addEventListener("input", (event) => {
+  const query = event.target.value;
+  const filteredContact = searchContacts(query);
+  renderContacts(filteredContact);
 });
 
 // initialize to display existing data
