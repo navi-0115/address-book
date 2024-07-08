@@ -48,8 +48,7 @@ const addContact = (contact) => {
   const contacts = getContacts();
   contacts.push(contact);
   saveContacts(contacts);
-  renderContacts();
-  console.log("Contacts added:", contact);
+  return contacts;
 };
 
 // Search Contacts
@@ -74,7 +73,8 @@ contactForm.addEventListener("submit", (event) => {
     address: contactForm.elements["address"].value,
   };
 
-  addContacts(newContact);
+  addContact(newContact);
+  renderContacts();
   contactForm.reset();
   contactModal.classList.add("hidden");
 });
