@@ -5,12 +5,20 @@ const contactModal = document.getElementById("contact-modal");
 
 // Save contacts to local storage
 const saveContacts = (contacts) => {
-  localStorage.setItem("contacts", JSON.stringify(contacts));
+  try {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  } catch (error) {
+    console.log("Could not save contacts to local storage");
+  }
 };
 // get contacts from local storage
 const getContacts = () => {
-  const contacts = localStorage.getItem("contacts");
-  return contacts ? JSON.parse(contacts) : [];
+  try {
+    const contacts = localStorage.getItem("contacts");
+    return contacts ? JSON.parse(contacts) : [];
+  } catch (error) {
+    console.log("Could not get contacts from local storage");
+  }
 };
 
 // Render Contact
