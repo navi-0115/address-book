@@ -24,7 +24,7 @@ const getContacts = () => {
 };
 
 // Render Contact
-const renderContacts = (contacts = getContacts()) => {
+const renderContacts = (contacts) => {
   // const contacts = getContacts();
   contactList.innerHTML = "";
   contacts.forEach((contact) => {
@@ -95,5 +95,6 @@ searchInput.addEventListener("input", (event) => {
 
 // initialize to display existing data
 document.addEventListener("DOMContentLoaded", () => {
-  renderContacts();
+  const contacts = getContacts();
+  renderContacts(contacts);
 });
