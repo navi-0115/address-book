@@ -9,7 +9,7 @@ const saveContacts = (contacts) => {
   try {
     localStorage.setItem("contacts", JSON.stringify(contacts));
   } catch (error) {
-    console.log("Could not save contacts to local storage");
+    console.log("Could not save contacts to local storage", error);
   }
 };
 // get contacts from local storage
