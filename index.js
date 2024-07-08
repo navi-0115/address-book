@@ -4,17 +4,17 @@ const contactForm = document.getElementById("contact-form");
 const contactModal = document.getElementById("contact-modal");
 
 // Save contacts to local storage
-function saveContacts(contacts) {
+const saveContacts = (contacts) => {
   localStorage.setItem("contacts", JSON.stringify(contacts));
-}
+};
 // get contacts from local storage
-function getContacts() {
+const getContacts = () => {
   const contacts = localStorage.getItem("contacts");
   return contacts ? JSON.parse(contacts) : [];
-}
+};
 
 // Render Contact
-function renderContacts() {
+const renderContacts = () => {
   const contacts = getContacts();
   contactList.innerHTML = "";
   contacts.forEach((contact, index) => {
@@ -33,26 +33,26 @@ function renderContacts() {
     `;
     contactList.appendChild(contactItem);
   });
-}
+};
 
 // Add Contacts
-function addContacts(contact) {
+const addContact = (contact) => {
   const contacts = getContacts();
   contacts.push(contact);
   saveContacts(contacts);
   renderContacts();
   console.log("Contacts added:", contact);
-}
+};
 
 // Search Contacts
-function searchContacts(contact, keyword) {
+const searchContacts = (contact, keyword) => {
   const contacts = getContacts();
   const filtered = contacts.filter((contact) =>
     contact.toLowerCase().includes(keyword.toLowerCase())
   );
   console.log("Filtered Contacts:\n", contact);
   renderContacts(filtered);
-}
+};
 
 // Event Listener for Add Contact Form
 contactForm.addEventListener("submit", (event) => {
