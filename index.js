@@ -1,9 +1,9 @@
 // DOM Elements
 const contactList = document.getElementById("contact-list");
 const contactForm = document.getElementById("contact-form");
-const contactModal = document.getElementById("contact-modal");
+const contactModal = document.getElementById("add-contact-modal");
 const searchInput = document.getElementById("search-input");
-const deleteButton = document.getElementById("delete-button");
+const deleteModal = document.getElementById("delete-modal");
 
 // Save contacts to local storage
 const saveContacts = (contacts) => {
@@ -77,8 +77,12 @@ const hideContactModal = () => {
   contactModal.classList.add("hidden");
 };
 
-// Event listener for delete contact
-deleteButton.addEventListener("click", (event) => {});
+// Event listener for delete contact form
+deleteModal.addEventListener("submit", (event) => {
+  const contacts = getContacts();
+  const deletedContact = deleteContact(contacts);
+  renderContacts(deletedContact);
+});
 
 // Event Listener for Add Contact Form
 contactForm.addEventListener("submit", (event) => {
