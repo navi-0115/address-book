@@ -24,8 +24,8 @@ const getContacts = () => {
 };
 
 // Render Contact
-const renderContacts = (contacts) => {
-  // const contacts = getContacts();
+const renderContacts = (specificRenderContacts) => {
+  const contacts = specificRenderContacts || getContacts();
   contactList.innerHTML = "";
   contacts.forEach((contact) => {
     const contactItem = document.createElement("tr");
@@ -89,7 +89,7 @@ contactForm.addEventListener("submit", (event) => {
   hideContactModal();
 });
 
-// Event listener for searching contacts
+// Event listener for searching contacts, then callback renderContacts on specificRenderContacts param
 searchInput.addEventListener("input", (event) => {
   const query = event.target.value;
   const filteredContact = searchContacts(query);
@@ -98,6 +98,5 @@ searchInput.addEventListener("input", (event) => {
 
 // initialize to display existing data
 document.addEventListener("DOMContentLoaded", () => {
-  const contacts = getContacts();
-  renderContacts(contacts);
+  renderContacts();
 });
