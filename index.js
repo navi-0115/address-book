@@ -72,8 +72,11 @@ const hideContactModal = () => {
 // Event Listener for Add Contact Form
 contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  const contacts = getContacts();
+  const contactId = contacts.length ? contacts[contacts.length - 1].id + 1 : 1;
 
   const newContact = {
+    id: contactId,
     name: contactForm.elements["name"].value,
     email: contactForm.elements["email"].value,
     phone: contactForm.elements["phone-number"].value,
