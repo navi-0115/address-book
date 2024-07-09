@@ -54,13 +54,13 @@ const addContact = (contact) => {
 };
 
 // Search Contacts
-function searchContacts(query) {
+const searchContacts = (query) => {
   const contacts = getContacts();
   const filtered = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(query.toLowerCase())
   );
   return filtered;
-}
+};
 
 // function to hide contact modal
 const hideContactModal = () => {
