@@ -3,6 +3,7 @@ const contactList = document.getElementById("contact-list");
 const contactForm = document.getElementById("contact-form");
 const contactModal = document.getElementById("contact-modal");
 const searchInput = document.getElementById("search-input");
+const deleteButton = document.getElementById("delete-button");
 
 // Save contacts to local storage
 const saveContacts = (contacts) => {
@@ -62,12 +63,22 @@ const searchContacts = (query) => {
   return filtered;
 };
 
+const deleteContact = (id) => {
+  const contacts = getContacts();
+  const removeContact = contacts.filter((contact) => contact.id !== id);
+  saveContacts(removeContact);
+  return removeContact;
+};
+
 // function to hide contact modal
 const hideContactModal = () => {
   contactForm.reset();
   contactModal.classList.remove("block");
   contactModal.classList.add("hidden");
 };
+
+// Event listener for delete contact
+deleteButton.addEventListener("click", (event) => {});
 
 // Event Listener for Add Contact Form
 contactForm.addEventListener("submit", (event) => {
