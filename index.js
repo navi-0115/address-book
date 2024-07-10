@@ -39,7 +39,7 @@ const renderContacts = (specificRenderContacts) => {
         <td class="px-4 py-3">${contact.address}</td>
         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
             <div class="flex items-center space-x-2">
-                <button type="button" data-drawer-target="drawer-update-product" data-drawer-show="drawer-update-product"
+                <button type="click" data-drawer-target="update-contact-modal" data-drawer-show="drawer-update-product"
                     aria-controls="drawer-update-product"
                     class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor"
@@ -51,7 +51,7 @@ const renderContacts = (specificRenderContacts) => {
                     </svg>
                     Edit
                 </button>
-                <button type="button" data-modal-target="delete-modal" data-modal-toggle="delete-modal"
+                <button type="click" data-modal-target="delete-contact-modal" data-modal-toggle="delete-contact-modal"
                     class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 -ml-0.5" viewbox="0 0 20 20" fill="currentColor"
                         aria-hidden="true">
