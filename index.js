@@ -3,7 +3,8 @@ const contactList = document.getElementById("contact-list");
 const contactForm = document.getElementById("contact-form");
 const contactModal = document.getElementById("add-contact-modal");
 const searchInput = document.getElementById("search-input");
-const deleteModal = document.getElementById("delete-modal");
+const deleteConfirmModal = document.getElementById("delete-contact-modal");
+const deleteConfirmButton = document.getElementById("confirm-delete-button");
 
 // Save contacts to local storage
 const saveContacts = (contacts) => {
@@ -39,8 +40,8 @@ const renderContacts = (specificRenderContacts) => {
         <td class="px-4 py-3">${contact.address}</td>
         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
             <div class="flex items-center space-x-2">
-                <button type="click" data-drawer-target="update-contact-modal" data-drawer-show="drawer-update-product"
-                    aria-controls="drawer-update-product"
+                <button id="update-contact-button" type="click" contact-id="${contact.id}" data-modal-target="update-contact-modal" data-modal-toggle="update-contact-modal""
+                    aria-controls="update-contact-modal"
                     class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor"
                         aria-hidden="true">
@@ -51,7 +52,7 @@ const renderContacts = (specificRenderContacts) => {
                     </svg>
                     Edit
                 </button>
-                <button type="click" data-modal-target="delete-contact-modal" data-modal-toggle="delete-contact-modal"
+                <button id="delete-contact-button" type="click" contact-id="${contact.id}" data-modal-target="delete-contact-modal" data-modal-toggle="delete-contact-modal"
                     class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 -ml-0.5" viewbox="0 0 20 20" fill="currentColor"
                         aria-hidden="true">
@@ -85,12 +86,12 @@ const searchContacts = (query) => {
   return filtered;
 };
 
-// const deleteContact = (id) => {
-//   const contacts = getContacts();
-//   const removeContact = contacts.filter((contact) => contact.id !== id);
-//   saveContacts(removeContact);
-//   return removeContact;
-// };
+const deleteContact = (id) => {
+  const contacts = getContacts();
+  const updatedContact = contacts.filter((contact) => contact.id !== id);
+  saveContacts(updatedContact);
+  return updatedContact;
+};
 
 // function to hide contact modal
 const hideContactModal = () => {
