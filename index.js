@@ -100,12 +100,19 @@ const hideContactModal = () => {
   contactModal.classList.add("hidden");
 };
 
-// Event listener for delete contact form
-// deleteModal.addEventListener("submit", (event) => {
-//   const contacts = getContacts();
-//   const deletedContact = deleteContact(contacts);
-//   renderContacts(deletedContact);
-// });
+// Event listener for contactList update and delete
+contactList.addEventListener("click", (event) => {
+  const buttonDeleteTarget = event.target;
+
+  // Event listener for delete contact button by contact id
+  if (buttonDeleteTarget.id === "delete-contact-button") {
+    const contactId = parseInt(
+      buttonDeleteTarget.getAttribute("contact-id", 10)
+    );
+    const deletedContact = deleteContact(contactId);
+    renderContacts(deletedContact);
+  }
+});
 
 // Event Listener for Add Contact Form
 contactForm.addEventListener("submit", (event) => {
