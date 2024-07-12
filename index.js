@@ -76,7 +76,6 @@ const addContact = (contact) => {
   const contacts = getContacts();
   contacts.push(contact);
   saveContacts(contacts);
-  window.location.replace("/");
   return contacts;
 };
 
@@ -114,7 +113,9 @@ contactList.addEventListener("click", (event) => {
     );
 
     Swal.fire({
-      title: "Are you sure you want to delete this item?",
+      title: "Delete confirmation!",
+      text: "Are you sure you want to delete this contact?",
+      icon: "warning",
       cancelButtonText: `Cancel`,
       confirmButtonText: "Yes, I'm sure!",
       showCancelButton: true,
@@ -131,15 +132,13 @@ contactList.addEventListener("click", (event) => {
         });
         const deletedContact = deleteContact(contactId);
         renderContacts(deletedContact);
-      } else if (result.isDenied) {
-        Swal.fire("Cancel from deletion", "", "info");
       }
     });
   }
 });
 
 // Event Listener for Add Contact Form
-contactForm.addEventListener("submit", (event) => {
+contactModal.addEventListener("submit", (event) => {
   event.preventDefault();
   const contacts = getContacts();
   const contactId = contacts.length ? contacts[contacts.length - 1].id + 1 : 1;
@@ -153,9 +152,20 @@ contactForm.addEventListener("submit", (event) => {
     address: contactForm.elements["address"].value,
   };
 
+  Swal.fire({
+    title: "Success!",
+    text: "Contact has been added",
+    icon: "success",
+    confirmButtonText: "OK!",
+    confirmButtonColor: "#0080fe",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.replace("/");
+    }
+  });
   addContact(newContact);
-  renderContacts();
   hideContactModal();
+  renderContacts();
 });
 
 // Event listener for searching contacts, then callback renderContacts on specificRenderContacts param
