@@ -38,7 +38,7 @@ const renderContacts = (specificRenderContacts) => {
         <td class="px-4 py-4">${contact.name}</td>
         <td class="px-4 py-3">${contact.email}</td>
         <td class="px-4 py-3">${contact.phone}</td>
-        <td class="px-4 py-3">${contact.jobTitle}</td>
+        <td class="px-4 py-3">${contact.job}</td>
         <td class="px-4 py-3">${contact.address}</td>
         <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
             <div class="flex items-center space-x-2">
@@ -111,7 +111,7 @@ contactList.addEventListener("click", (event) => {
     const contactId = parseInt(
       buttonDeleteTarget.getAttribute("contact-id", 10)
     );
-
+    // Delete confirmation popup
     Swal.fire({
       title: "Delete confirmation!",
       text: "Are you sure you want to delete this contact?",
@@ -143,15 +143,17 @@ contactModal.addEventListener("submit", (event) => {
   const contacts = getContacts();
   const contactId = contacts.length ? contacts[contacts.length - 1].id + 1 : 1;
 
+  const contactFormData = new FormData(contactForm);
   const newContact = {
     id: contactId,
-    name: contactForm.elements["name"].value,
-    email: contactForm.elements["email"].value,
-    phone: contactForm.elements["phone-number"].value,
-    jobTitle: contactForm.elements["job"].value,
-    address: contactForm.elements["address"].value,
+    name: contactFormData.get("name"),
+    email: contactFormData.get("email"),
+    phone: contactFormData.get("phone-number"),
+    job: contactFormData.get("job"),
+    address: contactFormData.get("address"),
   };
 
+  // Add contact swal popups when submit "save contact"
   Swal.fire({
     title: "Success!",
     text: "Contact has been added",
