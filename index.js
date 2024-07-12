@@ -74,6 +74,7 @@ const addContact = (contact) => {
   const contacts = getContacts();
   contacts.push(contact);
   saveContacts(contacts);
+  window.location.replace("/");
   return contacts;
 };
 
