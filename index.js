@@ -71,6 +71,67 @@ const renderContacts = (specificRenderContacts) => {
   });
 };
 
+// Render contact by id to for edit feature
+function renderEditContactsFormById(id) {
+  const contact = getContactById(id);
+
+  if (!contact) {
+    Swal.fire;
+    "Error", "Contact not found!", "error";
+  }
+  updateContactModal.setAttribute("selected-contact-id", id);
+  console.log("store selected contact id:", id);
+  updateContactModal.querySelector(".update-contact-body").innerHTML = `
+      <form id="update-contact-form">
+      <div class="grid gap-4 mb-4 sm:grid-cols-2">
+        <div>
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+            <input type="text" name="name" id="name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                placeholder="Type name" required
+                value= "${contact.name}" />
+        </div>
+        <div>
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+            <input type="email" name="email" id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                placeholder="Email" required
+                value= "${contact.email}" />
+        </div>
+        <div>
+            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+            <input type="number" name="phone" id="phone"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                placeholder="088812345678" required
+                value= "${contact.phone}" />
+        </div>
+        <div>
+            <label for="job" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job Title</label>
+            <input type="text" name="job" id="job"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                placeholder="Software Engineer"
+                value= "${contact.job}" />
+        </div>
+        <div class="sm:col-span-2">
+            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+            <textarea name="address" id="address" rows="2"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+                placeholder="Write the address here">${contact.address}</textarea>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+          <button type="submit"
+              class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Update
+              contact
+          </button>
+      </div>
+    </form>
+  `;
+  console.log("showing contactId data");
+  const updateContactForm = document.getElementById("update-contact-form");
+  updateContactForm.addEventListener("submit", editContact);
+}
+
 // Add Contacts
 const addContact = (contact) => {
   const contacts = getContacts();
