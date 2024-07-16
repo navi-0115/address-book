@@ -5,8 +5,7 @@ const contactModal = document.getElementById("add-contact-modal");
 const searchInput = document.getElementById("search-input");
 const deleteConfirmModal = document.getElementById("delete-contact-modal");
 const deleteConfirmButton = document.getElementById("confirm-delete-button");
-
-// const Swal = require("sweetalert2");
+const updateContactModal = document.getElementById("update-contact-modal");
 
 // Save contacts to local storage
 const saveContacts = (contacts) => {
@@ -25,6 +24,11 @@ const getContacts = () => {
     console.log("Could not get contacts from local storage", error);
     return [];
   }
+};
+
+const getContactById = (id) => {
+  const contacts = getContacts();
+  return contacts.find((contact) => contact.id === id);
 };
 
 // Render Contact
@@ -140,6 +144,40 @@ const addContact = (contact) => {
   return contacts;
 };
 
+const editContact = (event) => {
+  event.preventDefault();
+  const contacts = getContacts();
+
+  const contactFormData = new FormData(event.target);
+
+  const contactId = parseInt(contacts.getAttribute("selected-contact-id"), 10);
+  const newContact = {
+    id: contactId,
+    name: contactFormData.get("name"),
+    email: contactFormData.get("email"),
+    phone: contactFormData.get("phone"),
+    job: contactFormData.get("job"),
+    address: contactFormData.get("address"),
+  };
+
+  saveContacts(newContact);
+  renderContacts();
+  // Add contact swal popups when submit "save contact"
+  Swal.fire({
+    title: "Success!",
+    text: "Contact has been updated",
+    icon: "success",
+    confirmButtonText: "OK!",
+    confirmButtonColor: "#0080fe",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.replace("/");
+      updateContactModal.classList.remove("block");
+      updateContactModal.classList.add("hidden");
+    }
+  });
+};
+
 // Search Contacts
 const searchContacts = (query) => {
   const contacts = getContacts();
@@ -165,13 +203,11 @@ const hideContactModal = () => {
 
 // Event listener for contactList update and delete
 contactList.addEventListener("click", (event) => {
-  const buttonDeleteTarget = event.target;
+  const buttonTarget = event.target;
 
   // Event listener for delete contact button by contact id
-  if (buttonDeleteTarget.id === "delete-contact-button") {
-    const contactId = parseInt(
-      buttonDeleteTarget.getAttribute("contact-id", 10)
-    );
+  if (buttonTarget.id === "delete-contact-button") {
+    const contactId = parseInt(buttonTarget.getAttribute("contact-id", 10));
     // Delete confirmation popup
     Swal.fire({
       title: "Delete confirmation!",
@@ -195,6 +231,12 @@ contactList.addEventListener("click", (event) => {
         renderContacts(deletedContact);
       }
     });
+  }
+
+  if (buttonTarget.id === "update-contact-button") {
+    const contactId = parseInt(buttonTarget.getAttribute("contact-id"), 10);
+    const contact = getContactById(contactId);
+    renderEditContactsFormById(contact);
   }
 });
 
