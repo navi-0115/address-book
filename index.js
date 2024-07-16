@@ -26,6 +26,7 @@ const getContacts = () => {
   }
 };
 
+// Get contact value by id from contact-id
 const getContactById = (id) => {
   const contacts = getContacts();
   return contacts.find((contact) => contact.id === id);
@@ -84,7 +85,6 @@ function renderEditContactsFormById(id) {
     "Error", "Contact not found!", "error";
   }
   updateContactModal.setAttribute("selected-contact-id", id);
-  console.log("store selected contact id:", id);
   updateContactModal.querySelector(".update-contact-body").innerHTML = `
       <form id="update-contact-form">
       <div class="grid gap-4 mb-4 sm:grid-cols-2">
@@ -131,12 +131,12 @@ function renderEditContactsFormById(id) {
       </div>
     </form>
   `;
-  console.log("showing contactId data");
+
   const updateContactForm = document.getElementById("update-contact-form");
   updateContactForm.addEventListener("submit", editContact);
 }
 
-// Add Contacts
+// Add Contact
 const addContact = (contact) => {
   const contacts = getContacts();
   contacts.push(contact);
@@ -144,16 +144,19 @@ const addContact = (contact) => {
   return contacts;
 };
 
+// Edit contact function will run if edit button is clicked
 const editContact = (event) => {
   event.preventDefault();
   const contacts = getContacts();
 
   const contactFormData = new FormData(event.target);
 
+  // Parse into integer when get selected-contact-id id
   const contactId = parseInt(
     updateContactModal.getAttribute("selected-contact-id"),
     10
   );
+
   const newContact = {
     id: contactId,
     name: contactFormData.get("name"),
@@ -162,6 +165,7 @@ const editContact = (event) => {
     job: contactFormData.get("job"),
     address: contactFormData.get("address"),
   };
+  // Update contact using map by find id
   const updatedContact = contacts.map((contact) => {
     if (contact.id === newContact.id) {
       return newContact;
@@ -171,7 +175,8 @@ const editContact = (event) => {
   });
   saveContacts(updatedContact);
   renderContacts();
-  // Add contact swal popups when submit "save contact"
+
+  // Swal popups when click submit "update contact"
   Swal.fire({
     title: "Success!",
     text: "Contact has been updated",
