@@ -150,7 +150,10 @@ const editContact = (event) => {
 
   const contactFormData = new FormData(event.target);
 
-  const contactId = parseInt(contacts.getAttribute("selected-contact-id"), 10);
+  const contactId = parseInt(
+    updateContactModal.getAttribute("selected-contact-id"),
+    10
+  );
   const newContact = {
     id: contactId,
     name: contactFormData.get("name"),
@@ -159,8 +162,14 @@ const editContact = (event) => {
     job: contactFormData.get("job"),
     address: contactFormData.get("address"),
   };
-
-  saveContacts(newContact);
+  const updatedContact = contacts.map((contact) => {
+    if (contact.id === newContact.id) {
+      return newContact;
+    } else {
+      return contact;
+    }
+  });
+  saveContacts(updatedContact);
   renderContacts();
   // Add contact swal popups when submit "save contact"
   Swal.fire({
@@ -235,8 +244,7 @@ contactList.addEventListener("click", (event) => {
 
   if (buttonTarget.id === "update-contact-button") {
     const contactId = parseInt(buttonTarget.getAttribute("contact-id"), 10);
-    const contact = getContactById(contactId);
-    renderEditContactsFormById(contact);
+    renderEditContactsFormById(contactId);
   }
 });
 
